@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="homepage">
+    <a href="thefeed/index.html" aria-label="Go to The Feed" id="lighter-link">
+        <img class="lighter" src="images/lighter.GIF" alt="Go to The Feed">
+    </a>
+
+    <audio id="lighter-sound" src="music/lighter.mp3" preload="auto"></audio>
+    </main>
+
+    <script>
+        const lighterLink = document.getElementById("lighter-link");
+        const lighterSound = document.getElementById("lighter-sound");
+
+        lighterLink.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            lighterSound.currentTime = 0;
+            lighterSound.play();
+
+            lighterSound.onended = function() {
+                window.location.href = lighterLink.href;
+            };
+        });
+    </script>
+</body>
+</html>

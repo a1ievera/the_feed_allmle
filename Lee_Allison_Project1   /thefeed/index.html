@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Feed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.cursors-4u.net/cursors/animated/oth3-11-51736d03-32.css">
+</head>
+<body>
+<a href="../index.html" aria-label="Back to homepage">
+    <img class="back-image" src="../images/back.png" alt="Back to homepage">
+</a>
+<img class="title" src="../images/title.png">
+<img class="notebook" src="../images/notebook.png">
+<div class="notebook-text">
+September 29
+
+Today I learned I spend way too much time on my phone…but doesn’t everyone? Now you can see how I use my phone!
+
+Allison Lee
+</div>
+<img class="earbud" src="../images/cord.PNG">
+<img class="musicplayer" id="musicplayer" src="../images/musicplayer.PNG" alt="Play or pause music" role="button" tabindex="0">
+<video id="music-track" src="../music/stupid.mp4" preload="auto" playsinline hidden></video>
+<img class="pen" src="../images/pen.PNG">
+
+<div class="feed">
+    <div class="receipt-background" aria-hidden="true">
+        <img class="receipt-top-bg" src="../images/receipt-top.png" alt="">
+        <div class="receipt-middle-bg"></div>
+        <img class="receipt-bottom-bg" src="../images/receipt-bottom.png" alt="">
+    </div>
+    <div class="receipt-heading">What's in my Iphone</div>
+    <div class="feed-item image-item">
+        <img class="media bigger-media" src="../images/books.PNG" alt="Books list">
+        <p>I recently got back into reading so I made a list of books I currently want to read and checked it off when I did.</p>
+    </div>
+
+    <div class="feed-item image-item">
+        <img class="media bigger-media" src="../images/depop.PNG" alt="depop">
+        <p>I like browsing through Depop when I want to online shop but I’m not looking for anything specific. Most of the time I don’t get anything.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media" muted loop playsinline preload="metadata">
+            <source src="../images/notes.mp4" type="video/mp4">
+        </video>
+        <p>When I’m writing down notes I like to write them in Notability on my iPad. I’m currently studying some Korean in my free time.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media medium-media" muted loop playsinline preload="metadata">
+        <source src="../images/manga.mp4" type="video/mp4">
+        </video>
+        <p>I like to read manga while I’m on public transportation or when I’m bored. I’m currently reading Witch Hat Atelier after watching the anime.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media bigger-media" muted loop playsinline preload="metadata">
+         <source src="../images/instagram.mp4" type="video/mp4">
+        </video>
+        <p>I have multiple accounts on my Instagram. My main, spam, and my college church ministry that I help run. I like doomscrolling in my free time and uploading pictures on my spam.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media bigger-media" muted loop playsinline preload="metadata">
+    <source src="../images/pinterest.mp4" type="video/mp4">
+</video>
+        <p>I love scrolling through Pinterest for inspiration. I use it all the time for clothes, nails, art, design, hair, and tattoo references.</p>
+    </div>
+
+    <div class="feed-item video-item">
+       <video class="media bigger-media" muted loop playsinline preload="metadata">
+    <source src="../images/recipe.mp4" type="video/mp4">
+</video>
+        <p>I made banana bread last weekend so I needed to search up a recipe. I can’t bake without one so I usually just Google a recipe when I want to bake something.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media bigger-media" muted loop playsinline preload="metadata">
+    <source src="../images/tickets.mp4" type="video/mp4">
+</video>
+        <p>I’ve been going to more concerts recently so I use Ticketmaster to buy and save some of them. I get anxious that I’m going to miss the date so I check it frequently to make sure I don’t forget.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media bigger-media" muted loop playsinline preload="metadata">
+    <source src="../images/music.mp4" type="video/mp4">
+</video>
+        <p>I’m really bad at making multiple playlists so I just keep one that I constantly remove and add songs that I currently like to. The album cover is my cat.</p>
+    </div>
+
+    <div class="feed-item video-item">
+       <video class="media bigger-media" muted loop playsinline preload="metadata">
+    <source src="../images/alarms.mp4" type="video/mp4">
+</video>
+        <p>I’m really disorganized and never have a consistent sleep schedule so I always just make a new alarm when I need one instead of using old ones. I also never wake up to the first two alarms so it stacked up.</p>
+    </div>
+
+    <div class="feed-item video-item">
+        <video class="media bigger-media" muted loop playsinline preload="metadata">
+    <source src="../images/photos.mp4" type="video/mp4">
+</video>
+        <p>I like taking lots of photos when I do something or go somewhere. It’s nice looking back on the memories so I tend to do that a lot when I’m feeling sentimental.</p>
+    </div>
+    <div class="receipt-total"><span>TOTAL:</span><span>0.99</span></div>
+</div>
+
+<script>
+    const videos = document.querySelectorAll('video.media');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                video.muted = true;
+                video.play().catch(() => {});
+            } else {
+                video.pause();
+            }
+        });
+    }, {
+        threshold: [0, 0.5, 1]
+    });
+
+    videos.forEach((video) => {
+        video.muted = true;
+        video.volume = 0;
+
+        video.addEventListener('volumechange', () => {
+            video.muted = true;
+            video.volume = 0;
+        });
+
+        observer.observe(video);
+    });
+
+    const musicPlayer = document.getElementById('musicplayer');
+    const musicTrack = document.getElementById('music-track');
+
+    function toggleMusic() {
+        if (musicTrack.paused) {
+            musicTrack.play().catch(() => {});
+        } else {
+            musicTrack.pause();
+        }
+    }
+
+    document.addEventListener('click', (event) => {
+        const rect = musicPlayer.getBoundingClientRect();
+        const clickedOnPlayer =
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom;
+
+        if (clickedOnPlayer) {
+            toggleMusic();
+        }
+    }, true);
+
+    musicPlayer.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMusic();
+        }
+    });
+</script>
+
+</body>
+</html>

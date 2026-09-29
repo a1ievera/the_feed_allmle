@@ -1,0 +1,379 @@
+@font-face {
+    font-family: "Amsterdam";
+    src: url("../fonts/Amsterdam.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Siamese";
+    src: url("../fonts/Siamese.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Fake Receipt";
+    src: url("../fonts/Fake Receipt.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("../images/color.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #1B1516;
+
+}
+.back-image {
+    position: fixed;
+    top: -17px;
+    left: 30px;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+}
+
+
+.feed {
+    width: 500px;
+    margin-left: auto;
+    margin-right: 90px;
+    margin-top: 65px;
+    padding: 65px 35px 100px 35px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+    font-family: "Fake Receipt", monospace;
+    position: relative;
+    background: none;
+    transform: none;
+}
+
+.receipt-background {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.receipt-top-bg,
+.receipt-bottom-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.receipt-middle-bg {
+    min-height: 0;
+    background-image: url("../images/receipt-middle.png");
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-size: 100% auto;
+}
+
+.feed > :not(.receipt-background) {
+    position: relative;
+    z-index: 1;
+}
+
+.feed-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.media {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+
+.video-item,
+.image-item {
+    align-items: center;
+    gap: 12px;
+}
+
+.video-item p,
+.image-item p {
+    width: 30%;
+    max-width: 30%;
+    flex: none;
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.feed-item p {
+    margin: 0;
+    max-width: 420px;
+    font-size: 15px;
+    line-height: 1.4;
+    flex: none;
+    margin: 10px;
+}
+
+@media (max-width: 1000px) {
+    .feed {
+        width: 500px;
+        margin-right: 40px;
+        gap: 42px;
+    }
+
+    .media {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .video-item p,
+    .image-item p {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 720px) {
+    .feed {
+        width: calc(100% - 40px);
+        margin: 0 20px 0 auto;
+        padding: 30px 25px 180px 25px;
+        gap: 34px;
+    }
+
+    .feed-item {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .media {
+        width: 100%;
+        max-width: 100%;
+        max-height: 60vh;
+    }
+
+    .video-item,
+    .image-item {
+        align-items: center;
+        gap: 10px;
+    }
+
+    .video-item p,
+    .image-item p {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .feed-item p {
+        font-size: 12pt;
+    }
+}
+
+.title {
+    position: fixed;
+    height: auto;
+    width: 710px;
+    top: -35px;
+    left: 50px;
+}
+
+.notebook {
+    position: fixed;
+    height: auto;
+    width: 930px;
+    top: 125px;
+    left: -73px;
+    z-index: 1;
+}
+
+.notebook-text {
+    position: fixed;
+    top: 260px;
+    left: 470px;
+    width: 200px;
+    font-family: "Siamese", cursive;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #111;
+    white-space: pre-line;
+    z-index: 2;
+}
+
+.musicplayer {
+    position: fixed;
+    height: auto;
+    width: 450px;
+    top: 535px;
+    left: 125px;
+    cursor: pointer;
+}
+
+.earbud {
+    position: fixed;
+    height: auto;
+    width: 400px;
+    top: 510px;
+    left: -7px;
+}
+
+.pen {
+    position: fixed;
+    height: auto;
+    width: 350px;
+    top: 430px;
+    left: 480px;
+    transform: rotate(-10deg);
+    z-index: 3;
+}
+
+@media (max-width: 1000px) {
+    .receipt-heading {
+        width: 400px;
+        max-width: 70%;
+        font-size: 22pt;
+    }
+}
+
+@media (max-width: 720px) {
+    .receipt-heading {
+        width: 78%;
+        max-width: 78%;
+        font-size: 16pt;
+    }
+}
+
+
+.video-item p,
+.image-item p {
+    max-width: 72%;
+}
+
+@media (max-width: 1000px) {
+    .video-item p,
+    .image-item p {
+        width: 400px;
+        max-width: 70%;
+        text-align: right;
+        align-self: center;
+    }
+}
+
+@media (max-width: 720px) {
+    .video-item p,
+    .image-item p {
+        width: 90%;
+        max-width: 90%;
+        text-align: right;
+        align-self: center;
+    }
+}
+
+.video-item p::after,
+.image-item p::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: #111;
+    margin-top: 12px;
+    margin-left: auto;
+}
+
+@media (max-width: 720px) {
+    .video-item p::after,
+    .image-item p::after {
+        width: 70px;
+        margin-top: 10px;
+    }
+}
+
+
+.receipt-total {
+    width: clamp(420px, 38vw, 520px);
+    max-width: 85%;
+    margin: 5px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: "Fake Receipt", monospace;
+    font-size: 15pt;
+    line-height: 1.2;
+}
+
+@media (max-width: 1000px) {
+    .receipt-total {
+        width: 400px;
+        max-width: 70%;
+        font-size: 20pt;
+    }
+}
+
+@media (max-width: 720px) {
+    .receipt-total {
+        width: 78%;
+        max-width: 78%;
+        font-size: 16pt;
+    }
+}
+
+
+.feed .media,
+.feed .video-item p,
+.feed .image-item p,
+.feed .receipt-heading,
+.feed .total-row {
+    width: 100%;
+    max-width: 100%;
+}
+
+.receipt-heading {
+    text-align: center;
+    font-size: 15pt;
+    border-bottom: none;
+    padding-top: 40px;
+}
+
+.receipt-heading::after {
+    content: "";
+    display: block;
+    width: 370px;
+    height: 2px;
+    background: black;
+    margin: 50px auto 0;
+}
+
+.feed .medium-media {
+    width: 115%;
+    max-width: 125%;
+}
+
+.feed .bigger-media {   
+    width: 143%;
+    max-width: 150%;
+}
+
+
+.feed .video-item p,
+.feed .image-item p {
+    width: 350px;
+    max-width: 350px;
+    text-align: right;
+    align-self: flex-end;
+    margin-right: 27px;
+}
