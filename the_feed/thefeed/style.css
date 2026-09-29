@@ -75,7 +75,7 @@ body {
 
 .receipt-middle-bg {
     min-height: 0;
-    background-image: url("../images/receipt-middle.png");
+    background-image: url("../images/receipt-middle.PNG");
     background-repeat: repeat-y;
     background-position: center top;
     background-size: 100% auto;
